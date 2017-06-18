@@ -1,0 +1,19 @@
+public, accessModifierPublic, 1
+class, accessSpecific, 1
+protected, accessModifierProtected, 1
+private, accessModifierPrivate, 1
+if, controlSentenceIf,1
+else, controlSentenceElse,1
+while, controlSentenceWhile,1
+do, controlSentenceDo,1
+for, controlSentenceIf,1
+int, DataTypePrimitiveInteger,1
+float, DataTypePrimitiveFloat,1
+double, DataTypePrimitiveDouble,1
+string, DataTypePrimitiveString,1
+boolean, DataTypePrimitiveBoolean,1
+char, DataTypePrimitiveChar,1
+void, DataTypePrimitiveVoid,1
+true, DataTypePrimitiveValueTrue, 1
+false, DataTypePrimitiveValueFalse, 1
+return, controlStatementReturn, 1

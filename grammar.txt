@@ -1,0 +1,6 @@
+P -> V=E|iEtPeP|wEdP
+V -> id|id[E]
+E -> E+T|E-T|T
+T -> F|T*F
+F -> id|id(L)|num|(E)
+L->E|L,E

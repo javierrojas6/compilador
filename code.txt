@@ -1,0 +1,6 @@
+public void sumatoria(){
+    int a, b, c;
+	c=a+b;
+	print ("hola el resultado es",c);
+	return c;
+}
