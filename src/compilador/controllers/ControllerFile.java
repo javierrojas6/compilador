@@ -28,14 +28,15 @@ public class ControllerFile {
      * @throws Exception
      */
     public String getContent(File file, boolean validate) throws FileNotFoundException, IOException, Exception {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String tmp = reader.readLine();
-        StringBuilder content = new StringBuilder();
-        while (tmp != null) {
-            content.append(tmp + "\n");
-            tmp = reader.readLine();
+        StringBuilder content;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String tmp = reader.readLine();
+            content = new StringBuilder();
+            while (tmp != null) {
+                content.append(tmp).append("\n");
+                tmp = reader.readLine();
+            }
         }
-        reader.close();
         if (validate) {
             new ValidatorCodeContent(Config.VALIDATION_CODE, content.toString()).start();
         }
@@ -64,9 +65,9 @@ public class ControllerFile {
      * @throws IOException
      */
     public boolean saveContent(String content, String filename) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-        Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "utf-8"));
-        writer.write(content);
-        writer.close();
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "utf-8"))) {
+            writer.write(content);
+        }
         return true;
     }
 }

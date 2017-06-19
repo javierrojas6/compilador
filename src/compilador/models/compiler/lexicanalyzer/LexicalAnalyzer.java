@@ -60,7 +60,7 @@ public class LexicalAnalyzer implements IAnalyzer {
         code = getCode();
         Automatas aut = new Automatas();
         String objCode = "";
-        code = code.replaceAll("\n", "").replaceAll("\\s+", " ");
+        code = code.replaceAll("\\s+", " ");
         String lexema = "";
         char currentChar;
         SymbolsTable table = getSymbolsTable();

@@ -49,6 +49,7 @@ public class GUI extends javax.swing.JFrame {
         MenuHelp = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Compilador");
 
         ToolBar.setFloatable(false);
         ToolBar.setRollover(true);
@@ -172,18 +173,21 @@ public class GUI extends javax.swing.JFrame {
 
     private void MenuItemRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemRunActionPerformed
         try {
+            ControllerFile controllerFile = new ControllerFile();
             /*se carga la tabla de simbolos*/
-            ControllerSymbolsTable controllerSymbols = new ControllerSymbolsTable(new ControllerFile());
+            ControllerSymbolsTable controllerSymbols = new ControllerSymbolsTable(controllerFile);
             SymbolsTable table = controllerSymbols.getContent(new File(Config.FILENAME_SYMBOLS_TABLE));
+            TextAreaConsole.append("Tabla de simbolos cargada" + "\n");
 
             /*se carga la gramatica*/
-            ControllerGrammar controllerGrammar = new ControllerGrammar(new ControllerFile());
-            Grammar grammar = controllerGrammar.getContent(new File(Config.FILENAME_GRAMMAR), new File(Config.FILENAME_GRAMMAR_SPECIAL_SYMBOLS));
+//            ControllerGrammar controllerGrammar = new ControllerGrammar(controllerFile);
+//            Grammar grammar = controllerGrammar.getContent(new File(Config.FILENAME_GRAMMAR), new File(Config.FILENAME_GRAMMAR_SPECIAL_SYMBOLS));
+//            TextAreaConsole.append("gramatica cargada" + "\n");
 
             /*se carga el controlador de ejecucion*/
-            ControllerRun controller = new ControllerRun(getFile().getParent(), table, grammar);
+            ControllerRun controller = new ControllerRun(getFile().getParent(), table, null);
             if (controller.run(TextAreaCode.getText())) {
-                TextAreaConsole.append("analisis sintactico exitoso....\n");
+                TextAreaConsole.append("analisis lexico exitoso....\n");
             }
         } catch (Exception ex) {
             TextAreaConsole.append(ex.getMessage() + "\n");
@@ -197,7 +201,7 @@ public class GUI extends javax.swing.JFrame {
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
@@ -220,10 +224,8 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GUI().setVisible(true);
         });
         //</editor-fold>
         //</editor-fold>

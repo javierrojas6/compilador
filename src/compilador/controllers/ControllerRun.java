@@ -81,8 +81,8 @@ public class ControllerRun {
         String ObjString1 = lexicAnalyzer.start();
         
         /*ejecucion del analisis sintactico*/
-        IAnalyzer sintacticAnalyzer = new SintacticAnalyzer(getGrammar(), ObjString1);
-        String ObjString2 = sintacticAnalyzer.start();
+//        IAnalyzer sintacticAnalyzer = new SintacticAnalyzer(getGrammar(), ObjString1);
+//        String ObjString2 = sintacticAnalyzer.start();
         
         ControllerFile controller = new ControllerFile();
         String absoluteFileName = getPathName() + FileSystems.getDefault().getSeparator() + Config.FILENAME_LEXICAL_ANALIZER;

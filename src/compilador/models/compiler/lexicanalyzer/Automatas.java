@@ -7,8 +7,36 @@ public class Automatas {
     public static final int TYPE_ID = 3;
     private static boolean stringBegin;
 
-    public static boolean isId(String text) {
-        return false;
+    public static boolean isId(String lexema) {
+        boolean estadoAcepta = false;
+        char estado = 'A';
+
+        boolean error = false;
+        for (int i = 0; i < lexema.length(); i++) {
+            switch (estado) {
+                case 'A':
+                    if (Character.isLetter(lexema.charAt(i))) {
+                        estado = 'B';
+                    } else {
+                        error = true;
+                    }
+                    break;
+                case 'B':
+                case 'D':
+                case 'E':
+                    estadoAcepta = true;
+                    if (Character.isLetter(lexema.charAt(i))) {
+                        estado = 'D';
+                    } else if (Character.isDigit(lexema.charAt(i))) {
+                        estado = 'E';
+                    } else {
+                        error = true;
+                    }
+                    break;
+            }
+        }
+
+        return !error;
     }
 
     public static boolean isComment(String text) {
@@ -46,6 +74,7 @@ public class Automatas {
                 case ';':
                 case ')':
                 case '}':
+                case '\n':
                     result = true;
             }
         }
@@ -53,6 +82,9 @@ public class Automatas {
     }
 
     static int getType(String lexema) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (Automatas.isId(lexema)) {
+            return Automatas.TYPE_ID;
+        }
+        return -1;
     }
 }
