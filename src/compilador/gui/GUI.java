@@ -187,6 +187,7 @@ public class GUI extends javax.swing.JFrame {
             /*se carga el controlador de ejecucion*/
             ControllerRun controller = new ControllerRun(getFile().getParent(), table, null);
             if (controller.run(TextAreaCode.getText())) {
+                TextAreaConsole.append("archivo objeto escrito\n");
                 TextAreaConsole.append("analisis lexico exitoso....\n");
             }
         } catch (Exception ex) {
