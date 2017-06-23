@@ -1,1 +1,6 @@
-accessModifierPublic DataTypePrimitiveVoid ID(ID)ID{ID DataTypePrimitiveInteger ID,ID ID,ID ID;ID ID=ID+ID;ID ID ID("hola el resultado es",ID)ID;ID controlStatementReturn ID;ID ID}ID 
+accessModifierPublic DataTypePrimitiveVoid ID(){
+    DataTypePrimitiveInteger ID, ID, ID;
+	ID=ID+ID;
+	ID (STRING,ID);
+	controlStatementReturn ID;
+}
