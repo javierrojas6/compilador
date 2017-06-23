@@ -58,9 +58,7 @@ public class LexicalAnalyzer implements IAnalyzer {
     @Override
     public String start() {
         code = getCode();
-        Automatas aut = new Automatas();
         String objCode = "";
-        code = code.replaceAll("\\s+", " ");
         String lexema = "";
         char currentChar;
         SymbolsTable table = getSymbolsTable();
@@ -77,8 +75,8 @@ public class LexicalAnalyzer implements IAnalyzer {
                         case Automatas.TYPE_STRING:
                             break;
                         case Automatas.TYPE_ID:
-                            table.getToken(lexema);
-                            objCode += "ID" + currentChar;
+                            objCode += table.getToken(lexema) + currentChar;
+                            lexema = "";
                             break;
                         default:
                             objCode += table.getToken(lexema) + currentChar;
