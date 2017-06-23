@@ -82,6 +82,7 @@ public class Automatas {
                 case ')':
                 case '}':
                 case '\n':
+                case '\t':
                 case '&':
                 case '|':
                     result = true;

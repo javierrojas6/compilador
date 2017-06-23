@@ -73,9 +73,10 @@ public class LexicalAnalyzer implements IAnalyzer {
                         case Automatas.TYPE_COMMENT:
                             break;
                         case Automatas.TYPE_STRING:
+                            objCode += "STRING" + currentChar;
                             break;
                         case Automatas.TYPE_ID:
-                            objCode += table.getToken(lexema) + currentChar;
+                            objCode += "ID" + currentChar;
                             lexema = "";
                             break;
                         default:
